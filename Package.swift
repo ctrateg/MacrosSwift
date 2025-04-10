@@ -13,20 +13,15 @@ let package = Package(
     products: [
         .library(
             name: "MacrosSwift",
-            targets: ["Macros"]
-        ),
-        .executable(
-            name: "MacrosSwiftPlugin",
-            targets: ["MacrosSwiftPlugin"]
+            targets: ["MacrosSwift"]
         ),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-syntax.git", branch: "release/5.9"),
     ],
     targets: [
-        // Таргет с набором макросов
-        .macro(
-            name: "Macros",
+        .target(
+            name: "MacrosSwift",
             dependencies: [
                 .product(name: "SwiftSyntax", package: "swift-syntax"),
                 .product(name: "SwiftSyntaxBuilder", package: "swift-syntax"),
@@ -34,18 +29,6 @@ let package = Package(
                 .product(name: "SwiftCompilerPlugin", package: "swift-syntax")
             ],
             path: "Sources/Macros"
-        ),
-
-        // Таргет для плагина компилятора
-        .executableTarget(
-            name: "MacrosSwiftPlugin",
-            dependencies: [
-                .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
-                .product(name: "SwiftSyntax", package: "swift-syntax"),
-                .product(name: "SwiftSyntaxBuilder", package: "swift-syntax"),
-                .product(name: "SwiftSyntaxMacros", package: "swift-syntax")
-            ],
-            path: "Sources/MacrosSwiftPlugin"
         ),
     ]
 )

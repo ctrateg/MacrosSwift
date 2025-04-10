@@ -1,11 +1,10 @@
 import SwiftCompilerPlugin
-import Macros
 import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
 
 @main
-struct MacrosSwiftPlugin: CompilerPlugin {
+struct MacrosSwift: CompilerPlugin {
     let providingMacros: [Macro.Type] = [
         Resolve.self,
     ]
