@@ -6,6 +6,6 @@ import SwiftSyntaxMacros
 @main
 struct MacrosSwift: CompilerPlugin {
     let providingMacros: [Macro.Type] = [
-        ResolveClass.self,
+        Resolve.self,
     ]
 }
